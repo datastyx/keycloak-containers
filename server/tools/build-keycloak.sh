@@ -37,18 +37,14 @@ if [ "$GIT_REPO" != "" ]; then
     rm -rf /opt/jboss/maven
     rm -rf /opt/jboss/keycloak-source
     rm -rf $HOME/.m2/repository
-    if [ ! -d "/opt/jboss/keycloak" ]; then
-        mkdir -p /opt/jboss/keycloak
-    fi
+    shopt -s extglob
     mv /opt/jboss/keycloak-* /opt/jboss/keycloak
+    shopt -u extglob
 else
     echo "Keycloak from [download]: $KEYCLOAK_DIST"
 
     cd /opt/jboss/
     curl -L $KEYCLOAK_DIST | tar zx
-    if [ ! -d "/opt/jboss/keycloak" ]; then
-        mkdir -p /opt/jboss/keycloak
-    fi
     mv /opt/jboss/keycloak-* /opt/jboss/keycloak
 fi
 
