@@ -38,7 +38,7 @@ if [ "$GIT_REPO" != "" ]; then
     rm -rf /opt/jboss/keycloak-source
     rm -rf $HOME/.m2/repository
     shopt -s extglob
-    mv /opt/jboss/keycloak-* /opt/jboss/keycloak
+    mv /opt/jboss/keycloak-!(source) /opt/jboss/keycloak
     shopt -u extglob
 else
     echo "Keycloak from [download]: $KEYCLOAK_DIST"
